@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main id="app">
+        <div class="click-bg" @click="changeCursor" :disabled="pickButtonDisabled">
+            <video autoplay loop muted id="bg-video">
+                <source src="videos/Gen-2 real aquarium, full , 3258812586.mp4" type="video/mp4">
+            </video>
+            <h1>Diving for Pearls</h1>
+            <h2>Click! into the Ocean for the right Pearls!</h2>
+            <button class="btn-pearl" @click="pickNumber()" :disabled="pickButtonDisabled">Fish Pearl</button>
+
+            <div id="aquarium">
+                <ul id="pickedNumbers">
+                    <li v-for="number in lottoNumbers">{{number}}</li>
+                </ul>
+            </div>
+            <div id="numberLists" :class="{ show: lottoNumbers.length === 6 }">
+                <div>
+                    <h3>Picked Pearls:</h3>
+                    <ul>
+                        <li v-for="number in lottoNumbers">{{number}}</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Searched Pearls:</h3>
+                    <ul>
+                        <li v-for="number in selectedNumbers">{{number}}</li>
+                    </ul>
+                </div>
+            </div>
+            <button @click="reset" :disabled="resetButtonDisabled">Reset</button>
+            <p>{{result}}</p>
+        </div>
+    </main>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
